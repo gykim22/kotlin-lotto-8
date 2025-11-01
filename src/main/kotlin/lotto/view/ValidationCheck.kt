@@ -7,13 +7,13 @@ class ValidationCheck {
         while (true) {
             try {
                 val money = LottoView().getMoney()
-                require(money % 1000 == 0) { "[Error] 구입 금액은 1,000원 단위여야 합니다." }
+                require(money % 1000 == 0) { "[ERROR] 구입 금액은 1,000원 단위여야 합니다." }
                 require(money >= 1000) { "[ERROR] 구입 금액은 1000원 이상 자연수여야 합니다." }
                 return money / 1000
             } catch (e: NumberFormatException) {
                 println("[ERROR] 올바른 문자 형식으로 입력해주세요.")
             } catch (e: IllegalArgumentException) {
-                println(e)
+                println(e.message ?: "[ERROR] 잘못된 입력입니다.")
             }
         }
     }
