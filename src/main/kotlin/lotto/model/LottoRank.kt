@@ -1,11 +1,11 @@
 package lotto.model
 
 enum class LottoRank(val count: Int, val prize: Int, val bonus: Boolean = false) {
-    FIRST(6, 2000000000),
-    SECOND(5, 30000000, true),
-    THIRD(5, 1500000),
-    FOURTH(4, 50000),
     FIFTH(3, 5000),
+    FOURTH(4, 50000),
+    THIRD(5, 1500000),
+    SECOND(5, 30000000, true),
+    FIRST(6, 2000000000),
     LOSES(0, 0);
 
     /**
