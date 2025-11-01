@@ -1,5 +1,7 @@
 package lotto
 
+import lotto.model.ValidationCheck
+
 class Lotto(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) { "[ERROR] 로또 번호는 6개여야 합니다." }
@@ -8,4 +10,11 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     fun getSortedNumbers(): List<Int> = numbers.sorted()
+
+    companion object {
+        fun of(lottoNumbers: List<Int>): Lotto {
+            ValidationCheck.isValidLottoNumber(lottoNumbers)
+            return Lotto(lottoNumbers)
+        }
+    }
 }
