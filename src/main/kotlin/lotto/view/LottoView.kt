@@ -5,19 +5,19 @@ import lotto.Lotto
 import lotto.model.LottoRank
 
 class LottoView {
-    fun getMoney(): Int {
+    fun getMoney(): String {
         println("구입금액을 입력해 주세요.")
-        return Console.readLine().toInt()
+        return Console.readLine()
     }
 
-    fun getLottoNumbers(): List<Int> {
+    fun getLottoNumbers(): String {
         println("당첨 번호를 입력해 주세요.")
-        return Console.readLine().split(",").map { it.toInt() }
+        return Console.readLine()
     }
 
-    fun getBonusNumber(): Int {
+    fun getBonusNumber(): String {
         println("보너스 번호를 입력해 주세요.")
-        return Console.readLine().toInt()
+        return Console.readLine()
     }
 
     fun printLottoList(lottoList: List<Lotto>) {
