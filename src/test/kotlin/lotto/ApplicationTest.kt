@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersI
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 class ApplicationTest : NsTest() {
@@ -55,5 +57,33 @@ class ApplicationTest : NsTest() {
 
     companion object {
         private const val ERROR_MESSAGE: String = "[ERROR]"
+    }
+
+    @Nested
+    @DisplayName("사용자 입력")
+    inner class UserInput {
+        @Test
+        fun `사용자 입력 금액이 1000원 단위가 아닐 시 예외 발생`() {
+            assertSimpleTest {
+                runException("9900")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
+        }
+
+        @Test
+        fun `사용자 입력 금액이 음수일 시 예외 발생`() {
+            assertSimpleTest {
+                runException("-1000")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
+        }
+
+        @Test
+        fun `사용자 입력 금액이 0원일 시 예외 발생`() {
+            assertSimpleTest {
+                runException("0")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
+        }
     }
 }
