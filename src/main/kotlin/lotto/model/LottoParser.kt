@@ -5,10 +5,12 @@ object LottoParser {
         input.trim().toIntOrNull()
             ?: throw IllegalArgumentException("[ERROR] 구입 금액은 숫자여야 합니다.")
 
-    fun lottoNumbers(input: String): List<Int> =
-        input.split(Regex("[,\\s]+"))
+    fun lottoNumbers(input: String): List<Int> {
+        if (input.isBlank()) throw IllegalArgumentException("[ERROR] 로또 번호는 비어있을 수 없습니다.")
+        return input.split(Regex("[,\\s]+"))
             .filter { it.isNotBlank() }
             .map { it.toIntOrNull() ?: throw IllegalArgumentException("[ERROR] 로또 번호는 숫자여야 합니다.") }
+    }
 
     fun bonusNumber(input: String): Int =
         input.trim().toIntOrNull()
