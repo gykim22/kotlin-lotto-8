@@ -1,6 +1,7 @@
 package lotto
 
 import lotto.controller.LottoController
+import lotto.model.LottoParser
 import lotto.view.LottoView
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -42,7 +43,7 @@ class LottoTest {
     @Test
     fun `로또 번호에 숫자 이외의 문자를 입력할 시 예외가 발생한다`() {
         assertThrows<IllegalArgumentException> {
-
+            LottoParser.money("1,2,3,4,5,6")
         }
     }
 }
