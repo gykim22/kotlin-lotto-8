@@ -12,11 +12,12 @@ class LottoController(
 ) {
     fun run() {
         val validatedAmount = getValidateMoney()
-        val lottoNumbers = getValidateLottoNumbers()
-        val bonusNumber = getValidateBonusNumber(lottoNumbers)
         val lottoList = LottoGame.generateLotto(validatedAmount)
 
         view.printLottoList(lottoList)
+
+        val lottoNumbers = getValidateLottoNumbers()
+        val bonusNumber = getValidateBonusNumber(lottoNumbers)
         val results = lottoList.map {
             val matchCount = it.getSortedNumbers().count { num -> num in lottoNumbers.getSortedNumbers() }
             val bonusMatch = bonusNumber in it.getSortedNumbers()
